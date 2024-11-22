@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Type Display</title>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>BobBob</title>
+    
+        <style>
+            .header {
+                padding: 10px;
+                text-align: center;
+            }
+    
+            body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f8ff; /* Lys bakgrunnsfarge */
+             }
+        
+        h1 {
+            font-size: 8em;
+            margin-bottom: 100px;
+            color: #333;
+        }
+
+        #material {
+            font-size: 6em;
+            font-weight: bold;
+            color: #007acc;
+        }
+
+
+        </style>
+    
+        </head>
+    
+        <body style="background-color: powderblue;">
+    
+    
+            <div class="header">
+                <h1 style="text-align:center;">BobBob</h1>
+            </div>
+                </body>
+    
+    </html>
+
+
+    <script>
+        async function fetchMaterial() {
+            try {
+                const response = await fetch('/latest_material');
+                const data = await response.json();
+                document.getElementById('material').innerText = `Materiale: ${data.material}`;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        // Oppdater hvert sekund
+        setInterval(fetchMaterial, 1000);
+    </script>
+</head>
+<body>
+    <h1>Materialtype</h1>
+    <p id="material">Laster data...</p>
+</body>
+</html>
